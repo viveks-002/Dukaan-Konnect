@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dukan Konnect</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .glow {
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+    }
+    nav, footer {
+      background: linear-gradient(90deg, #1e3a8a, #7c3aed) !important;
+    }
+    .container-box {
+      position: relative;
+      overflow: hidden;
+    }
+    .shooting-star {
+      position: absolute;
+      width: 2px;
+      height: 100px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+      z-index: 1;
+    }
+
+    /* Top-to-bottom animations */
+    @keyframes shootingStar1 {
+      0% { transform: translateX(0) translateY(-100px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(200px) translateY(500px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar2 {
+      0% { transform: translateX(50px) translateY(-150px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(250px) translateY(600px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar3 {
+      0% { transform: translateX(100px) translateY(-120px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(300px) translateY(550px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar4 {
+      0% { transform: translateX(150px) translateY(-130px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(350px) translateY(650px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar5 {
+      0% { transform: translateX(-50px) translateY(-110px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(150px) translateY(500px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar6 {
+      0% { transform: translateX(-100px) translateY(-140px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(100px) translateY(600px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar7 {
+      0% { transform: translateX(-150px) translateY(-100px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(50px) translateY(550px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar8 {
+      0% { transform: translateX(200px) translateY(-120px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(400px) translateY(500px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar9 {
+      0% { transform: translateX(250px) translateY(-150px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(450px) translateY(600px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar10 {
+      0% { transform: translateX(-200px) translateY(-130px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(0px) translateY(650px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar11 {
+      0% { transform: translateX(300px) translateY(-110px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(500px) translateY(500px) rotate(135deg); opacity: 0; }
+    }
+    @keyframes shootingStar12 {
+      0% { transform: translateX(-250px) translateY(-140px) rotate(135deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateX(-50px) translateY(600px) rotate(135deg); opacity: 0; }
+    }
+
+    /* Assign animations to stars */
+    .container-box .shooting-star:nth-child(1) { 
+      animation: shootingStar1 2s infinite ease-in-out; 
+      left: 10%;
+    }
+    .container-box .shooting-star:nth-child(2) { 
+      animation: shootingStar2 2.2s infinite ease-in-out; 
+      animation-delay: 0.2s; 
+      left: 20%;
+    }
+    .container-box .shooting-star:nth-child(3) { 
+      animation: shootingStar3 2.5s infinite ease-in-out; 
+      animation-delay: 0.4s; 
+      left: 30%;
+    }
+    .container-box .shooting-star:nth-child(4) { 
+      animation: shootingStar4 2.3s infinite ease-in-out; 
+      animation-delay: 0.6s; 
+      left: 40%;
+    }
+    .container-box .shooting-star:nth-child(5) { 
+      animation: shootingStar5 2.1s infinite ease-in-out; 
+      animation-delay: 0.8s; 
+      left: 50%;
+    }
+    .container-box .shooting-star:nth-child(6) { 
+      animation: shootingStar6 2.4s infinite ease-in-out; 
+      animation-delay: 1s; 
+      left: 60%;
+    }
+    .container-box .shooting-star:nth-child(7) { 
+      animation: shootingStar7 2.6s infinite ease-in-out; 
+      animation-delay: 1.2s; 
+      left: 70%;
+    }
+    .container-box .shooting-star:nth-child(8) { 
+      animation: shootingStar8 2s infinite ease-in-out; 
+      animation-delay: 1.4s; 
+      left: 80%;
+    }
+    .container-box .shooting-star:nth-child(9) { 
+      animation: shootingStar9 2.3s infinite ease-in-out; 
+      animation-delay: 1.6s; 
+      left: 15%;
+    }
+    .container-box .shooting-star:nth-child(10) { 
+      animation: shootingStar10 2.5s infinite ease-in-out; 
+      animation-delay: 1.8s; 
+      left: 25%;
+    }
+    .container-box .shooting-star:nth-child(11) { 
+      animation: shootingStar11 2.2s infinite ease-in-out; 
+      animation-delay: 2s; 
+      left: 35%;
+    }
+    .container-box .shooting-star:nth-child(12) { 
+      animation: shootingStar12 2.4s infinite ease-in-out; 
+      animation-delay: 2.2s; 
+      left: 45%;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+  <!-- Navbar -->
+  <nav class="flex justify-between items-center px-6 py-4 border-b border-white/10 bg-black/80 sticky top-0 z-50 backdrop-blur-lg">
+    <h1 class="text-2xl font-bold gradient-text">Dukan Konnect</h1>
+    <ul class="hidden md:flex space-x-6 text-sm text-gray-300">
+      <li><a href="#services" class="hover:text-white transition">Services</a></li>
+      <li><a href="#solutions" class="hover:text-white transition">Solutions</a></li>
+      <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+      <li><a href="#about" class="hover:text-white transition">About</a></li>
+      <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+      <li><a href="#Booking Slot" class="hover:text-white transition">Booking Slot</a></li>
+    </ul>
+    <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm hover:shadow-lg hover:shadow-blue-500/30 transition-all">Get Quote</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="flex flex-col md:flex-row justify-center items-center text-center px-6 py-32 md:py-48 max-w-6xl mx-auto">
+    <div class="flex-1 mb-10 md:mb-0 md:pr-10 fade-in">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+        <span class="gradient-text glow">Dukaan Konnect</span> Solutions for <br>Your household.
+      </h1>
+      <p class="text-lg md:text-xl mt-6 text-gray-300">
+        We help businesses leverage cutting-edge artificial intelligence to automate processes, gain insights, and drive growth.
+      </p>
+      <div class="mt-10 flex gap-4 justify-center">
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition-transform hover:shadow-blue-500/30">
+          Get Started
+        </button>
+        <button class="border border-white/20 text-lg px-8 py-4 rounded-full hover:bg-white/10 transition-all">
+          Learn More
+        </button>
+      </div>
+    </div>
+    <div class="flex-1 fade-in">
+      <img src="./photo1.jpg" alt="AI Illustration" class="rounded-xl shadow-lg w-full h-auto max-w-md mx-auto border border-white/10" />
+    </div>
+  </section>
+
+  <!-- Trusted By Section -->
+  <section class="py-12 bg-gradient-to-r from-black to-gray-900 border-y border-white/10 container-box">
+    <!-- Shooting stars -->
+    <!-- <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div> -->
+    
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-center text-gray-400 mb-8">TRUSTED BY INNOVATIVE COMPANIES WORLDWIDE</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        <img src="./photo1.jpg" alt="Company 1" class="h-8 opacity-70 hover:opacity-100 transition">
+        <img src="./photo2.jpg" alt="Company 2" class="h-8 opacity-70 hover:opacity-100 transition">
+        <img src="./photo3.jpg" alt="Company 3" class="h-8 opacity-70 hover:opacity-100 transition">
+        <img src="./photo1.jpg" alt="Company 4" class="h-8 opacity-70 hover:opacity-100 transition">
+        <img src="./photo2.jpg" alt="Company 5" class="h-8 opacity-70 hover:opacity-100 transition">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="px-6 py-20 bg-gradient-to-b from-black to-gray-900">
+    <h2 class="text-3xl md:text-4xl font-semibold text-center mb-4">What makes Us Different.</h2>
+    <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">Comprehensive AI solutions tailored to your business needs</p>
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-lg border border-white/10 hover:scale-105 transition-transform group container-box">
+        <!-- Shooting stars -->
+        <!-- <div class="shooting-star"></div> -->
+        <!-- <div class="shooting-star"></div> -->
+        <!-- <div class="shooting-star"></div> -->
+        <!-- <div class="shooting-star"></div> -->
+        <!-- <div class="shooting-star"></div> -->
+        <!-- <div class="shooting-star"></div> -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-500/30 transition">
+          <i class="fas fa-robot text-blue-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Verified & Trained Professionals</h3>
+        <p class="text-gray-400">Every service provider is background-checked and professionally trained to ensure consistent quality.</p>
+        <a href="#" class="text-blue-400 text-sm mt-4 inline-block hover:underline">Learn more →</a>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-lg border border-white/10 hover:scale-105 transition-transform group container-box">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-purple-500/30 transition">
+          <i class="fas fa-cogs text-purple-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">App-Based Booking & Tracking</h3>
+        <p class="text-gray-400">Seamless experience through the app — schedule, track, and manage services with just a few taps.</p>
+        <a href="#" class="text-blue-400 text-sm mt-4 inline-block hover:underline">Learn more →</a>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-lg border border-white/10 hover:scale-105 transition-transform group container-box">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-500/30 transition">
+          <i class="fas fa-code text-green-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Transparent Pricing</h3>
+        <p class="text-gray-400">No hidden charges. You know exactly what you're paying for — upfront.</p>
+        <a href="#" class="text-blue-400 text-sm mt-4 inline-block hover:underline">Learn more →</a>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-lg border border-white/10 hover:scale-105 transition-transform group container-box">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-500/30 transition">
+          <i class="fas fa-code text-green-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Customer-Centric Experience</h3>
+        <p class="text-gray-400">100% satisfaction guarantee, responsive support, and easy refunds/rescheduling if needed.</p>
+        <a href="#" class="text-blue-400 text-sm mt-4 inline-block hover:underline">Learn more →</a>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl backdrop-blur-lg border border-white/10 hover:scale-105 transition-transform group container-box">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-500/30 transition">
+          <i class="fas fa-code text-green-400 text-xl"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Standardized Service Quality</h3>
+        <p class="text-gray-400">Unlike local vendors, UC maintains strict quality protocols, tools, and hygiene standards across every service.</p>
+        <a href="#" class="text-blue-400 text-sm mt-4 inline-block hover:underline">Learn more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Section -->
+  <section id="solutions" class="px-6 py-24 bg-gradient-to-b from-black via-gray-900 to-black text-white">
+    <div class="max-w-6xl mx-auto text-center fade-in">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-8 tracking-wide">
+        <span class="gradient-text">Industry-Specific</span> House-hold Solutions
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto mb-16 text-lg">
+        Dukaan Konnect is a leading home services platform that connects customers with trusted professionals for services like beauty, cleaning, repairs, and more. With verified experts, upfront pricing, and on-time service, it brings convenience right to your doorstep.
+      </p>
+      <div class="grid md:grid-cols-3 gap-10">
+        <div class="relative bg-white/5 border border-white/10 p-8 rounded-2xl overflow-hidden group hover:scale-105 transition-transform container-box">
+          <!-- Shooting stars -->
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl"></div>
+          <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-heartbeat text-blue-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2 z-10 relative">Healthcare Intelligence</h3>
+          <p class="text-gray-300 z-10 relative">AI-powered diagnostics, patient monitoring, and drug discovery solutions.</p>
+        </div>
+        <div class="relative bg-white/5 border border-white/10 p-8 rounded-2xl overflow-hidden group hover:scale-105 transition-transform container-box">
+          <!-- Shooting stars -->
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl"></div>
+          <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-chart-line text-purple-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2 z-10 relative">Time Management</h3>
+          <p class="text-gray-300 z-10 relative">Advanced algorithms for fraud detection and risk assessment.</p>
+        </div>
+        <div class="relative bg-white/5 border border-white/10 p-8 rounded-2xl overflow-hidden group hover:scale-105 transition-transform container-box">
+          <!-- Shooting stars -->
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          <div class="shooting-star"></div>
+          
+          <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl"></div>
+          <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mb-6 mx-auto">
+            <i class="fas fa-shopping-cart text-green-400 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-2 z-10 relative">Retail & E-Commerce</h3>
+          <p class="text-gray-300 z-10 relative">Personalized recommendations and inventory optimization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 bg-gradient-to-b from-gray-900 to-black container-box">
+    <!-- Shooting stars -->
+    <!-- <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div> -->
+    
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div class="p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">50+</div>
+          <div class="text-gray-400">Enterprise Clients</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">95%</div>
+          <div class="text-gray-400">Client Retention</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">24/7</div>
+          <div class="text-gray-400">Support Available</div>
+        </div>
+        <div class="p-6">
+          <div class="text-4xl font-bold gradient-text mb-2">10x</div>
+          <div class="text-gray-400">ROI Guarantee</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Choice of Service Section with Pricing -->
+  <section id="pricing" class="px-6 py-24 bg-gradient-to-b from-black to-gray-900">
+    <h2 class="text-3xl md:text-4xl font-semibold text-center mb-12">Choose Your AI Service</h2>
+    <div class="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto" id="service-container">
+      <div class="bg-white/5 p-8 rounded-2xl border border-white/10 container-box hover:scale-105 transition-transform">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <h3 class="text-xl font-semibold mb-2">Basic AI Consulting</h3>
+        <p class="text-gray-400 mb-4">Perfect for startups</p>
+        <p class="text-2xl font-bold gradient-text mb-4">$999/month</p>
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full w-full" onclick="selectService('basic')">Select Plan</button>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl border border-white/10 container-box hover:scale-105 transition-transform">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <h3 class="text-xl font-semibold mb-2">Pro Automation</h3>
+        <p class="text-gray-400 mb-4">For growing businesses</p>
+        <p class="text-2xl font-bold gradient-text mb-4">$1999/month</p>
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full w-full" onclick="selectService('pro')">Select Plan</button>
+      </div>
+      <div class="bg-white/5 p-8 rounded-2xl border border-white/10 container-box hover:scale-105 transition-transform">
+        <!-- Shooting stars -->
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        <div class="shooting-star"></div>
+        
+        <h3 class="text-xl font-semibold mb-2">Enterprise AI</h3>
+        <p class="text-gray-400 mb-4">Full-scale solutions</p>
+        <p class="text-2xl font-bold gradient-text mb-4">$4999/month</p>
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full w-full" onclick="selectService('enterprise')">Select Plan</button>
+      </div>
+    </div>
+    <div id="service-details" class="mt-12 text-center max-w-2xl mx-auto hidden">
+      <h3 id="selected-service" class="text-2xl font-semibold mb-4"></h3>
+      <p id="service-description" class="text-gray-300 mb-4"></p>
+      <p id="service-price" class="text-xl font-bold gradient-text mb-4"></p>
+      <button class="bg-white text-black px-6 py-3 rounded-full" onclick="backToPlans()">Back to Plans</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="px-6 py-24 bg-black container-box">
+    <!-- Shooting stars -->
+    <!-- <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div> -->
+    
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center gap-16">
+        <div class="flex-1">
+          <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" alt="TitanSAI Team" class="rounded-xl shadow-lg w-full h-auto border border-white/10">
+        </div>
+        <div class="flex-1">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-6">About <span class="gradient-text">TitanSAI</span></h2>
+          <p class="text-lg text-gray-300 mb-6">
+            TitanSAI is a leading AI solutions provider founded in 2020 with a mission to democratize artificial intelligence for businesses of all sizes.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 bg-gradient-to-b from-black to-gray-900 container-box">
+    <!-- Shooting stars -->
+    <!-- <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div> -->
+    
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-12">What Our Clients Say</h2>
+      <div class="space-y-8">
+        <div class="bg-white/5 p-8 rounded-2xl border border-white/10 text-left">
+          <p class="text-gray-300 italic">"TitanSAI transformed our customer service operations with their AI chatbot solution."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-900/50 to-purple-900/50 container-box">
+    <!-- Shooting stars -->
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-semibold mb-6">Ready to Transform Your Business with AI?</h2>
+      <p class="text-xl text-gray-300 mb-8">Schedule a free consultation with our AI experts.</p>
+      <button class="bg-white text-black text-lg px-8 py-4 rounded-full shadow-lg hover:scale-105 transform transition-transform">
+        Book a Demo
+      </button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="px-6 py-24 bg-gray-900 container-box">
+    <!-- Shooting stars -->
+    <!-- <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div> -->
+    
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-semibold mb-4">Contact Us</h2>
+        <p class="text-gray-300 max-w-2xl mx-auto">Have questions about our AI solutions? Get in touch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-white/10">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-bold gradient-text mb-4">TitanSAI</h3>
+          <p class="text-gray-400 text-sm">Leading .</p>
+        </div>
+        <div>
+          <h4 class="text-white font-medium mb-4">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">Service Provider</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">Custom Development</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-medium mb-4">Company</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">About Us</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-white font-medium mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white text-sm transition">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      fadeElements.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 1s ease, transform 1s ease';
+        observer.observe(el);
+      });
+
+      // Service selection logic
+      const services = {
+        'basic': { name: 'Basic AI Consulting', desc: 'Perfect for startups', price: '$999/month' },
+        'pro': { name: 'Pro Automation', desc: 'For growing businesses', price: '$1999/month' },
+        'enterprise': { name: 'Enterprise AI', desc: 'Full-scale solutions', price: '$4999/month' }
+      };
+
+      window.selectService = function(plan) {
+        const container = document.getElementById('service-container');
+        const details = document.getElementById('service-details');
+        container.classList.add('hidden');
+        details.classList.remove('hidden');
+        document.getElementById('selected-service').textContent = services[plan].name;
+        document.getElementById('service-description').textContent = services[plan].desc;
+        document.getElementById('service-price').textContent = services[plan].price;
+      };
+
+      window.backToPlans = function() {
+        document.getElementById('service-container').classList.remove('hidden');
+        document.getElementById('service-details').classList.add('hidden');
+      };
+    });
+  </script>
+</body>
+</html>
